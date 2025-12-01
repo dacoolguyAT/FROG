@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxh5ltf1uoj14"]
 
-[ext_resource type="Script" path="res://script/camera.gd" id="1_dn46f"]
+[ext_resource type="Script" uid="uid://1spb1sgmk3iq" path="res://script/camera.gd" id="1_dn46f"]
 [ext_resource type="PackedScene" uid="uid://k1na0qawes8o" path="res://scenes/UI/p1_hud.tscn" id="1_gowew"]
 
 [node name="Camera2D" type="Camera2D"]

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://d3cbup5stinvn" path="res://sprites/background/4.png" id="2_6c7vj"]
 [ext_resource type="Texture2D" uid="uid://cb2j13lh3damg" path="res://sprites/background/5.png" id="3_53rlu"]
 [ext_resource type="PackedScene" uid="uid://biiou1loco1a5" path="res://scenes/Player stuff/player.tscn" id="4_4c4fl"]
-[ext_resource type="Script" path="res://temp/playertest.gd" id="5_3r20q"]
+[ext_resource type="Script" uid="uid://bfvv2ocm1pwn5" path="res://temp/playertest.gd" id="5_3r20q"]
 [ext_resource type="PackedScene" uid="uid://u7o4fr3mkpi6" path="res://scenes/tile_map.tscn" id="6_ygy30"]
 [ext_resource type="PackedScene" uid="uid://kc7eysfgloks" path="res://scenes/itemBubble.tscn" id="7_e3ayd"]
-[ext_resource type="Script" path="res://temp/temp move plat.gd" id="8_h2ivm"]
+[ext_resource type="Script" uid="uid://ciixv6hakhbnl" path="res://temp/temp move plat.gd" id="8_h2ivm"]
 [ext_resource type="Texture2D" uid="uid://ja3f657wnj8e" path="res://sprites/New Piskel (1) (1).png" id="9_7wysl"]
 [ext_resource type="PackedScene" uid="uid://dxh5ltf1uoj14" path="res://scenes/UI/Camera.tscn" id="10_0tpi3"]
 

@@ -1,11 +1,17 @@
-extends Node
+extends state
+@export var speed = 80
+var max_walk = 500
+var playerId = Player.playerId
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func start():pass
+func exit():pass
+func Update(_delta:float):
+	
+	var walk = Input.get_action_strength("P%s_right" % [playerId]) - Input.get_action_strength("P%s_left" % [playerId])
+	
+	if(abs(walk)<.1): stateTransition.emit(self,"idle")
+	Player.velocity += (walk)*speed*_delta
+	Player.move_and_slide()
+		
+	if Input.is_action_just_pressed("P%s_jump" % [playerId]) && Player.is_on_floor(): stateTransition.emit(self, "jump")

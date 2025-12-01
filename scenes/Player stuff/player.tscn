@@ -1,15 +1,22 @@
-[gd_scene load_steps=21 format=3 uid="uid://biiou1loco1a5"]
+[gd_scene load_steps=28 format=3 uid="uid://biiou1loco1a5"]
 
 [ext_resource type="Texture2D" uid="uid://cuyhvvybktekv" path="res://sprites/frogger - Copy.png" id="1_nslmk"]
-[ext_resource type="Script" path="res://script/Player stuff/player.gd" id="1_rc32j"]
+[ext_resource type="Script" uid="uid://d34br1lxx8uih" path="res://script/Player stuff/player.gd" id="1_rc32j"]
 [ext_resource type="Texture2D" uid="uid://dqlkdhlmji856" path="res://sprites/New Piskel (4) (1).png" id="3_ffuwx"]
 [ext_resource type="PackedScene" uid="uid://bne1ap73wm8ca" path="res://scenes/Player stuff/tounge.tscn" id="3_k6c25"]
 [ext_resource type="Texture2D" uid="uid://b75lx4toxu15h" path="res://sprites/New Piskel (7).png" id="5_3lugp"]
 [ext_resource type="PackedScene" uid="uid://bu52rljrpsp80" path="res://scenes/Player stuff/bullet.tscn" id="5_htnn2"]
 [ext_resource type="Texture2D" uid="uid://r2o0ok4dngpg" path="res://sprites/New Piskel (8).png" id="7_jkq1r"]
-[ext_resource type="Script" path="res://script/stateStuff/stateMachine.gd" id="8_gou7f"]
-[ext_resource type="Script" path="res://script/Player stuff/states/idle.gd" id="9_iefqo"]
-[ext_resource type="Script" path="res://script/Player stuff/states/walk.gd" id="10_5ndc0"]
+[ext_resource type="Script" uid="uid://bc42gvduh6hi7" path="res://script/stateStuff/stateMachine.gd" id="8_gou7f"]
+[ext_resource type="Script" uid="uid://cputi5rdgj6c" path="res://script/Player stuff/states/idle.gd" id="9_iefqo"]
+[ext_resource type="Script" uid="uid://d0iwwnixgfcj0" path="res://script/Player stuff/states/walk.gd" id="10_5ndc0"]
+[ext_resource type="Script" uid="uid://cwpe37gwfp3k1" path="res://script/Player stuff/states/jump.gd" id="11_y5nas"]
+[ext_resource type="Script" uid="uid://d2srm8pd32b6n" path="res://script/Player stuff/states/dash.gd" id="12_1ml2m"]
+[ext_resource type="Script" uid="uid://dis2tn5rpxbat" path="res://script/stateStuff/gunStateMachine.gd" id="13_upa6v"]
+[ext_resource type="Script" uid="uid://dlce3wchlqvid" path="res://script/Player stuff/states/weapon.gd" id="13_usm72"]
+[ext_resource type="Script" uid="uid://bip630k8pqluo" path="res://script/Player stuff/states/reload.gd" id="14_wpell"]
+[ext_resource type="Script" uid="uid://dq4kn3y0rol5v" path="res://script/Player stuff/states/shootPistol.gd" id="15_orn27"]
+[ext_resource type="Script" uid="uid://ckgtitknjm61y" path="res://script/Player stuff/states/switch.gd" id="16_0lwxu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3f6f"]
 atlas = ExtResource("5_3lugp")
@@ -115,13 +122,36 @@ animation = &"idel  jumpupdown  walk"
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_mftks")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "Player")]
+[node name="general state" type="Node" parent="." node_paths=PackedStringArray("initial_state", "Player")]
 script = ExtResource("8_gou7f")
 initial_state = NodePath("idle")
 Player = NodePath("..")
 
-[node name="idle" type="Node" parent="StateMachine"]
+[node name="idle" type="Node" parent="general state"]
 script = ExtResource("9_iefqo")
 
-[node name="walk" type="Node" parent="StateMachine"]
+[node name="walk" type="Node" parent="general state"]
 script = ExtResource("10_5ndc0")
+
+[node name="jump" type="Node" parent="general state"]
+script = ExtResource("11_y5nas")
+
+[node name="dash" type="Node" parent="general state"]
+script = ExtResource("12_1ml2m")
+
+[node name="gun states" type="Node" parent="." node_paths=PackedStringArray("initial_state", "Player")]
+script = ExtResource("13_upa6v")
+initial_state = NodePath("weapon")
+Player = NodePath("..")
+
+[node name="weapon" type="Node" parent="gun states"]
+script = ExtResource("13_usm72")
+
+[node name="shootPistol" type="Node" parent="gun states"]
+script = ExtResource("15_orn27")
+
+[node name="reload" type="Node" parent="gun states"]
+script = ExtResource("14_wpell")
+
+[node name="switch" type="Node" parent="gun states"]
+script = ExtResource("16_0lwxu")

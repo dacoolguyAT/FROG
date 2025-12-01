@@ -44,6 +44,8 @@ func dmg_change_def():
 	dmg = basedmg
 func dmg_change(dm:float):
 	dmg = dm*basedmg
+func spd_change(sp:float):
+	speed=sp*basespd
 
 func destroy():
 	self.queue_free()
